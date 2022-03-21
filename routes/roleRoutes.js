@@ -15,3 +15,5 @@ router.get('/role', (req,res) => {
         });
     });
 });
+
+module.exports = router;

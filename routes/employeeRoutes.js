@@ -15,3 +15,5 @@ router.get('/employee', (req,res) => {
         });
     });
 });
+
+module.exports = router;
