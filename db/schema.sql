@@ -1,13 +1,13 @@
 DROP TABLE IF EXISTS employeeTracker;
 
 CREATE TABLE department(
-    id: INTEGER,
+    id: INTEGER AUTO_INCREMENT,
     name: VARCHAR(30),
     PRIMARY KEY(id)
 );
 
 CREATE TABLE role(
-    id: INTEGER PRIMARY KEY,
+    id: INTEGER AUTO_INCREMENT PRIMARY KEY,
     title: VARCHAR(30),
     salary: DECIMAL,
     department_id: INTEGER,
@@ -16,7 +16,7 @@ CREATE TABLE role(
 );
 
 CREATE TABLE employee(
-    id: INTEGER PRIMARY KEY,
+    id: INTEGER AUTO_INCREMENT PRIMARY KEY,
     first_name: VARCHAR(30) NOT NULL,
     last_name: VARCHAR(30) NOT NULL,
     role_id: INTEGER,

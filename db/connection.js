@@ -10,7 +10,7 @@ const db = mysql.createConnection(
         password: 'password',
         database: 'employeeTracker'
     },
-    console.log('Connected to the election database.')
+    console.log('Connected to the Employee Tracker database.')
 );
 
 //since it's an independent module now, must export it

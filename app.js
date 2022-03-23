@@ -1,4 +1,4 @@
-const fs = require('fs');
+const db = require('./db/connection');
 const inquirer = require('inquirer');
 
 const employees = [];
@@ -16,28 +16,28 @@ const mainMenu = () => {
     ])
     .then ((answers) => {
         console.log(answers);
-        if (answers.memberChoice === "View all departments") {
+        if (answers.userChoice === "View all departments") {
             viewDepartments();
             //presented with a formatted table showing department names and department ids
         }
-        if (answers.memberChoice === "View all roles") {
+        if (answers.userChoice === "View all roles") {
             viewRoles();
             //presented with the job title, role id, the department that role belongs to, and the salary for that role
         }
-        if (answers.memberChoice === "View all employees") {
+        if (answers.userChoice === "View all employees") {
             viewEmployees();
             //presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
         }
-        if (answers.memberChoice === "Add a department") {
+        if (answers.userChoice === "Add a department") {
             addDepartment();
         }
-        if (answers.memberChoice === "Add a role") {
+        if (answers.userChoice === "Add a role") {
             addRole();
         }
-        if (answers.memberChoice === "Add an employee") {
+        if (answers.userChoice === "Add an employee") {
             addEmployee();
         }
-        if (answers.memberChoice === "Update an employee role") {
+        if (answers.userChoice === "Update an employee role") {
             updateEmployeeRole();
         }
     });

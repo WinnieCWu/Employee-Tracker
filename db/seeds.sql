@@ -1,20 +1,22 @@
-INSERT INTO department (id, name)
+INSERT INTO department (name)
 VALUES
-('1','Engineering'),
-('2','Finance'),
-('3','Sales'),
-('4','Legal')
+('Engineering'),
+('Finance'),
+('Sales'),
+('Legal')
 
-INSERT INTO role (id, title, salary, department_id)
+INSERT INTO role (title, salary, department_id)
 VALUES
-('1','Software Engineer','120000','1'),
-('2','Accountant','125000','2'),
-('3','Salesperson','80000','3'),
-('4','Lawyer','190000','4')
+('Software Engineer Manager',120000,1),
+('Software Engineer', 110000,2)
+('Accountant',125000,3),
+('Salesperson',80000,4),
+('Lawyer',190000,5)
 
-INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
-('1','Winnie','Wu','1','1'),
-('2','Nancy','X','2','2'),
-('3','Mike','T','3','3'),
-('4','Erika','R','4','4')
+('Winnie','Wu',1,null),
+('Sam', 'Fox', 2, 1)
+('Nancy','Xi',3,2),
+('Mike','Te',4,3),
+('Erika','Ro',5,4)
