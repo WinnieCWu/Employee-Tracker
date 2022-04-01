@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "express": "^4.17.3",
+    "console.table": "^0.10.0",
     "inquirer": "^8.2.1",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.1.0"
   },
   "scripts": {
     "start": "node app.js"
@@ -14,13 +14,12 @@
   "directories": {
     "lib": "lib"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WinnieCWu/Employee-Tracker.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Winnie Wu",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/WinnieCWu/Employee-Tracker/issues"
