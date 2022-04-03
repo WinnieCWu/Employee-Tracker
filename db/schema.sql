@@ -1,13 +1,11 @@
 DROP DATABASE IF EXISTS employeeTracker;
-
 CREATE DATABASE employeeTracker;
 
 USE employeeTracker;
 
 CREATE TABLE department(
-    id INTEGER AUTO_INCREMENT,
-    name VARCHAR(30),
-    PRIMARY KEY(id)
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(30)
 );
 
 CREATE TABLE role(
