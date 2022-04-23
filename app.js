@@ -56,7 +56,7 @@ const viewDepartments = () => {
   // Query database
   db.query("SELECT * FROM department", function (err, results) {
     if (err) throw err;
-    console.table(results);
+    console.log(results);
     mainMenu();
   });
 };
@@ -64,7 +64,7 @@ const viewDepartments = () => {
 const viewRoles = () => {
   db.query("SELECT * FROM role", function (err, results) {
     if (err) throw err;
-    console.table(results);
+    console.log(results);
     mainMenu();
   });
 };
@@ -72,7 +72,7 @@ const viewRoles = () => {
 const viewEmployees = () => {
   db.query("SELECT * FROM employee", function (err, results) {
     if (err) throw err;
-    console.table(results);
+    console.log(results);
     mainMenu();
   });
 };
@@ -97,7 +97,7 @@ const addDepartment = () => {
     //the dept will be added to employeeTracker db
     .then((answers) => {
       console.log(answers);
-      const dept = new Department(answers.dept);
+      const dept = new Department(answers.deptName);
       employees.push(dept);
       mainMenu();
     });
@@ -108,28 +108,14 @@ const addRole = () => {
     .prompt([
       {
         //prompt to add role
-        name: `roleName`,
-        type: `input`,
-        message: `Please provide your role.`,
-        validate: (roleNameInput) => {
-          if (roleNameInput) {
-            return true;
-          } else {
-            console.log("You need to enter your role!");
-            return false;
-          }
-        },
-      },
-      {
-        //enter name
         name: `jobTitle`,
         type: `input`,
-        message: `What is the name of the role?`,
+        message: `What is the name of the job title?`,
         validate: (jobTitleInput) => {
           if (jobTitleInput) {
             return true;
           } else {
-            console.log("You need to enter your job title!");
+            console.log("You need to enter the job title!");
             return false;
           }
         },
@@ -152,12 +138,12 @@ const addRole = () => {
         //enter dept for the role
         name: `deptOfRole`,
         type: `input`,
-        message: `Which department does your role belong to?`,
+        message: `Which department does the role belong to?`,
         validate: (deptOfRoleInput) => {
           if (deptOfRoleInput) {
             return true;
           } else {
-            console.log("You need to enter your department name!");
+            console.log("You need to enter the department name!");
             return false;
           }
         },
@@ -166,7 +152,6 @@ const addRole = () => {
     .then((answers) => {
       console.log(answers);
       const role = new Role(
-        answers.roleName,
         answers.jobTitle,
         answers.salary,
         answers.deptOfRole

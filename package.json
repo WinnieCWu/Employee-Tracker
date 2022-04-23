@@ -1,16 +1,12 @@
 {
-  "dependencies": {
-    "console.table": "^0.10.0",
-    "inquirer": "^8.2.1",
-    "mysql2": "^2.1.0"
-  },
-  "scripts": {
-    "start": "node app.js"
-  },
   "name": "employee-tracker",
   "description": "",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "seeds": "node db/seeds.sql"
+  },
   "directories": {
     "lib": "lib"
   },
@@ -21,6 +17,11 @@
   "keywords": [],
   "author": "Winnie Wu",
   "license": "ISC",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^8.2.1",
+    "mysql2": "^2.1.0"
+  },
   "bugs": {
     "url": "https://github.com/WinnieCWu/Employee-Tracker/issues"
   },
