@@ -81,11 +81,11 @@ const addDepartment = () => {
   inquirer
     .prompt([
       {
-        name: `deptName`,
+        name: `name`,
         type: `input`,
         message: `What is the name of the department`,
-        validate: (deptNameInput) => {
-          if (deptNameInput) {
+        validate: (name) => {
+          if (name) {
             return true;
           } else {
             console.log("You need to enter the name of the department!");
@@ -96,10 +96,13 @@ const addDepartment = () => {
     ])
     //the dept will be added to employeeTracker db
     .then((answers) => {
-      console.log(answers);
-      const dept = new Department(answers.deptName);
-      employees.push(dept);
-      mainMenu();
+        const sql = `INSERT INTO department (name) VALUES (?)`;
+        const params = [answers.name];
+        db.query(sql, params, function (err, results) {
+          if (err) throw err;
+          console.log(results);
+          mainMenu();
+        });
     });
 };
 
@@ -108,7 +111,7 @@ const addRole = () => {
     .prompt([
       {
         //prompt to add role
-        name: `jobTitle`,
+        name: `title`,
         type: `input`,
         message: `What is the name of the job title?`,
         validate: (jobTitleInput) => {
@@ -136,11 +139,11 @@ const addRole = () => {
       },
       {
         //enter dept for the role
-        name: `deptOfRole`,
+        name: `department_id`,
         type: `input`,
-        message: `Which department does the role belong to?`,
-        validate: (deptOfRoleInput) => {
-          if (deptOfRoleInput) {
+        message: `Which is the id of the department?`,
+        validate: (deptId) => {
+          if (deptId) {
             return true;
           } else {
             console.log("You need to enter the department name!");
@@ -151,13 +154,14 @@ const addRole = () => {
     ])
     .then((answers) => {
       console.log(answers);
-      const role = new Role(
-        answers.jobTitle,
-        answers.salary,
-        answers.deptOfRole
-      );
-      employees.push(role);
-      mainMenu();
+        const sql = "INSERT INTO role (title, salary, department_id) VALUES (?,?,?)"
+        const params =  [answers.title, answers.salary, answers.department_id]
+        
+        db.query(sql, params, function (err, results) {
+         if (err) throw err;
+          console.log(results);
+          mainMenu();
+        });
     });
 };
 
@@ -223,14 +227,11 @@ const addEmployee = () => {
     ])
     .then((answers) => {
       console.log(answers);
-      const role = new Role(
-        answers.firstName,
-        answers.lastName,
-        answers.employeeRole,
-        answers.managerName
-      );
-      employees.push(role);
-      mainMenu();
+      db.query("INSERT INTO * FROM employee", function (err, results) {
+        if (err) throw err;
+        console.log(results);
+        mainMenu();
+      });
     });
 };
 
@@ -254,9 +255,11 @@ const updateEmployeeRole = () => {
     ])
     .then((answers) => {
       console.log(answers);
-      const updatedRole = new Update(answers.updateRole);
-      employees.push(updatedRole);
-      mainMenu();
+        db.query("INSERT INTO * FROM employee", function (err, results) {
+          if (err) throw err;
+          console.log(results);
+          mainMenu();
+        });
     });
 };
 
