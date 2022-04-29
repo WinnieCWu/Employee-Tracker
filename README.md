@@ -4,7 +4,7 @@
 This is a command-line app that manages a company's database. Business owners can view and manage the departments, roles, and employees in their company, in addition to updating employee roles.
 
 ## Technologies used
-Utlizes Node.js, Inquirer, and MySQL to manage a company's database.
+Utlizes Node.js, Inquirer, MySQL to manage a company's database, and console.table package to print MySQL rows to the console on the command line.
 
 ## What it looks like
 Link to walkthrough video: https://drive.google.com/file/d/10G5dnu2BwHex1uSk0D2OAd6-0M3toHQV/view
