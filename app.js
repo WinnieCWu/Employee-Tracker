@@ -170,7 +170,7 @@ const addEmployee = () => {
     .prompt([
       {
         //enter first name
-        name: `firstName`,
+        name: `first_name`,
         type: `input`,
         message: `What is the employee's first name?`,
         validate: (firstNameInput) => {
@@ -184,7 +184,7 @@ const addEmployee = () => {
       },
       {
         //enter last name
-        name: `lastName`,
+        name: `last_name`,
         type: `input`,
         message: `What is the employee's last name?`,
         validate: (lastNameInput) => {
@@ -198,11 +198,11 @@ const addEmployee = () => {
       },
       {
         //enter role
-        name: `employeeRole`,
+        name: `role_id`,
         type: `input`,
-        message: `What is the employee's role?`,
-        validate: (employeeRoleInput) => {
-          if (employeeRoleInput) {
+        message: `What is the employee's role id?`,
+        validate: (employeeRoleIdInput) => {
+          if (employeeRoleIdInput) {
             return true;
           } else {
             console.log("You need to the employee's role!");
@@ -212,11 +212,11 @@ const addEmployee = () => {
       },
       {
         //enter manager name
-        name: `managerName`,
+        name: `manager_id`,
         type: `input`,
-        message: `Who is the employee's manager`,
-        validate: (managerNameInput) => {
-          if (managerNameInput) {
+        message: `What is the employee's manager's id`,
+        validate: (managerNameIdInput) => {
+          if (managerNameIdInput) {
             return true;
           } else {
             console.log("You need the employee's manager!");
@@ -227,7 +227,10 @@ const addEmployee = () => {
     ])
     .then((answers) => {
       console.log(answers);
-      db.query("INSERT INTO * FROM employee", function (err, results) {
+      const sql = "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)";
+      const params =[answers.first_name, answers.last_name, answers.role_id, answers.manager_id];
+
+      db.query(sql, params, function (err, results) {
         if (err) throw err;
         console.log(results);
         mainMenu();
@@ -240,14 +243,28 @@ const updateEmployeeRole = () => {
     .prompt([
       {
         //prompt to select employee to update
-        name: `updateRole`,
+        name: `employee_id`,
         type: `input`,
-        message: `Which employee's role do you want to update?`,
-        validate: (updateRoleInput) => {
-          if (updateRoleInput) {
+        message: `What is the employee id of the employee you want to update?`,
+        validate: (updateEmployeeInput) => {
+          if (updateEmployeeInput) {
             return true;
           } else {
-            console.log("You need to select which employee's role to update!");
+            console.log("You need to share the employee id to update!");
+            return false;
+          }
+        },
+      },
+      {
+        //prompt to employee role
+        name: `role_id`,
+        type: `input`,
+        message: `What is the role id of the employee you want to update?`,
+        validate: (updateRoleIdInput) => {
+          if (updateRoleIdInput) {
+            return true;
+          } else {
+            console.log("You need to share the role id of the employee you wish to update!");
             return false;
           }
         },
@@ -255,7 +272,10 @@ const updateEmployeeRole = () => {
     ])
     .then((answers) => {
       console.log(answers);
-        db.query("INSERT INTO * FROM employee", function (err, results) {
+      const sql = "UPDATE employee SET role_id = ? WHERE employee_id = ?";
+      const params = [answers.role_id, answers.employee_id];
+
+        db.query(sql, params, function (err, results) {
           if (err) throw err;
           console.log(results);
           mainMenu();
